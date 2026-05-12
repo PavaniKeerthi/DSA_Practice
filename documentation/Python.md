@@ -1,725 +1,858 @@
-**Core Python**
+﻿# Core Python Notes
 
+---
 
+# Core Python
 
-&#x09;1. Basics \& Control Flow – Data types, variables, I/O
-– operators, conditionals, loops
+## 1. Basics & Control Flow
 
-&#x09;			 – break, continue, pass
+* Data types
+* Variables
+* Input & Output
+* Operators
+* Conditional statements
+* Loops
+* `break`, `continue`, `pass`
 
+## 2. Data Structures
 
+* Strings
+* Lists
+* Tuples
+* Sets
+* Dictionaries
 
-&#x09;2. Data Structures 	 – Strings, lists, tuples, sets, dictionaries
+## 3. Functions
 
-&#x09;3. Functions 		 – Functions, lambda, generators, decorators
+* Functions
+* Lambda functions
+* Generators
+* Decorators
 
-&#x09;4. OOPS			 – Class, Objects, inheritance, polymorphism, encapsulation, abstraction
+## 4. OOPS
 
+* Class
+* Objects
+* Inheritance
+* Polymorphism
+* Encapsulation
+* Abstraction
 
+## 5. Practical Python
 
-&#x09;5. Practical Python 	 – File handling, exception handling, logging, modules/packages
+* File handling
+* Exception handling
+* Logging
+* Modules & Packages
 
-&#x09;6. Concurrency 		 – Multithreading, multiprocessing
+## 6. Concurrency
 
+* Multithreading
+* Multiprocessing
 
+---
 
+# Data Types, Variables, Input & Output
 
+---
 
-**========================================================================================================================================================================================**
+# Data Types
 
-**Data Types, Variables, Input \& Outputs**
+## Primitive Data Types
 
-**========================================================================================================================================================================================**
+* `int`
+* `str`
+* `float`
+* `bool`
 
-**Datatypes :**
+## Collection Data Types
 
-&#x09;Primitive datatypes     :  int, str, float, bool
+* `list`
+* `tuple`
+* `dictionary`
+* `set`
 
-&#x09;Collection datatypes    :  list, tuple, dictionary, set
+---
 
+# Variables
 
+A variable is:
 
-**Variables:**
+```text
+A name used to store data that can change during program execution.
+```
 
-&#x20;   - Name used to store data that can change during program execution
+Python does not require datatype declaration.
 
-&#x20;   - No datatype declaration required, can hold any data type
+Example:
 
+```python
+x = 10
+name = "Pavani"
+```
 
+---
 
-&#x20;     **Global Variable:** Use "global" keyword to access and modify a variable inside a function
+# Global Variable
 
+Use the `global` keyword to modify global variables inside functions.
 
+```python
+x = 10
 
-&#x09;Ex:
+def update_global():
+    global x
+    x = 20
 
-&#x20;   	x = 10                          # Global variable
+update_global()
+print(x)
+```
 
+Output:
 
+```text
+20
+```
 
-&#x09;def update\_global():
+---
 
-&#x09;        global x                    # Declare x as global
+# Variable Naming Rules
 
-&#x20;       	x = 20                      # Update global variable
+1. Allowed:
 
+   * letters (`a-z`, `A-Z`)
+   * numbers (`0-9`)
+   * underscore (`_`)
 
+2. Variable cannot start with a number.
 
-&#x09;update\_global()
+3. Variable names are case-sensitive.
 
-&#x20;   	print(x)                        # Output: 20
+4. Python keywords cannot be used.
 
+---
 
+# Naming Styles
 
-&#x20;     **Naming Rules:**
+## camelCase
 
-&#x20;   		1. Allowed: letters (a-z, A-Z), numbers (0-9), underscore (\_); cannot start with a number
+```python
+studentName
+```
 
-&#x20;   		2. Case-sensitive and cannot use Python keywords
+## PascalCase
 
-&#x20;   		3. Multi-word naming styles:
+```python
+StudentName
+```
 
-&#x20;       		- camelCase  : first word lowercase, next words capitalized
+## snake_case (Preferred in Python)
 
-&#x20;       		- PascalCase : each word starts with capital letter
+```python
+student_name
+```
 
-&#x20;       		- snake\_case : words separated by underscores (preferred in Python)
+---
 
+# Input
 
+## Static Input
 
-**Input:**
+### Multiple Values to Multiple Variables
 
-&#x20;   Static:
+```python
+a, b, c = 1, "hero", "Ram Charan"
+```
 
-&#x20;       ⮚ Multiple Values to Multiple variables : a, b, c = 1, "hero", "Ram charan"
+### Single Value to Multiple Variables
 
-&#x20;       ⮚ Single value to Multiple variables    : a = b = c = 1
+```python
+a = b = c = 1
+```
 
+---
 
+## Dynamic Input
 
-&#x20;   Dynamic:
+```python
+name = input("Enter your name: ")
+age = int(input("Enter your age: "))
+height = float(input("Enter your height: "))
+```
 
-&#x20;       name   = input("Enter your name: ")              # String input (default); type(name)=<class 'str'>
+---
 
-&#x20;       age    = int(input("Enter your age: "))          # Integer input; type(age)=<class 'int'>
+# Output
 
-&#x20;       height = float(input("Enter your height: "))     # Float input; type(height)=<class 'float'>
+```python
+print(f"Name: {name}\nAge: {age}\nHeight: {height}")
+```
 
+---
 
+# Operators
 
-**Output:**
+---
 
-&#x20;      print(f"Name: {name}\\nAge: {age}\\nHeight: {height}") # Display Output
+# Arithmetic Operators
 
+```python
++  -  *  /  //  %  **
+```
 
+Example:
 
-**========================================================================================================================================================================================**
+```python
+print(2 ** 3)
+```
 
-**Operators, Conditional Statements, Iterative Statements**
+Output:
 
-**========================================================================================================================================================================================**
+```text
+8
+```
 
-**Operators:**
+---
 
-&#x09;Numerical Functions:
+# Bitwise Operators
 
-&#x20;   		Arithmetic     : +   -   \*   /   //   %   \*\* (exponential)
+```python
+&  |  ^  ~  <<  >>
+```
 
-&#x20;   		Bitwise        : \&   |   ^   \~   <<   >>
+---
 
+# Comparison Operators
 
+```python
+==  !=  >  <  >=  <=
+```
 
-&#x09;Single Value Check:
+---
 
-&#x20;   		Comparison     : ==  !=  >   <   >=   <=
+# Logical Operators
 
-&#x20;   		Logical        : and or  not
+```python
+and  or  not
+```
 
+---
 
+# Membership Operators
 
-&#x09;Multi Value Check:
+```python
+in
+not in
+```
 
-&#x20;   		Membership     : in  not in
+Example:
 
+```python
+print(2 in [1,2,3])
+```
 
+Output:
 
-**Quantifiers:**
+```text
+True
+```
 
-&#x09;all(n == 1 for n in nums)   # True only if all elements are 1
+---
 
-&#x09;any(n == 1 for n in nums)   # True if at least one element is 1
+# Quantifiers
 
+## all()
 
+```python
+nums = [1,1,1]
+print(all(n == 1 for n in nums))
+```
 
-**Conditional Statements in Python**
+## any()
 
+```python
+nums = [0,0,1]
+print(any(n == 1 for n in nums))
+```
 
+---
 
-&#x20;1. Standard Format
+# Conditional Statements
 
-&#x09;if condition1:
+## Standard Format
 
-&#x20;   		print("Statement")
+```python
+if condition1:
+    print("Statement")
+elif condition2:
+    print("Statement")
+else:
+    print("Statement")
+```
 
-&#x09;elif condition2:
+---
 
-&#x20;   		print("Statement")
+## Single-Line Format
 
-&#x09;elif condition3:
+```python
+if condition:
+    print("Statement")
+```
 
-&#x20;   		print("Statement")
+---
 
-&#x09;else:
+## Short-Hand If Else
 
-&#x20;   		print("Statement")
+```python
+result = "Positive" if number > 0 else "Non-positive"
+```
 
+---
 
+# Iterative Statements
 
+Python supports:
 
+* `for`
+* `while`
 
-&#x20;2. Single-line Format
+---
 
-&#x09;if condition1: 	 print("Statement")
+# Index-Based Iteration
 
-&#x09;elif condition2: print("Statement")
+```python
+numbers = [1,2,3]
 
-&#x09;elif condition3: print("Statement")
+for i in range(len(numbers)):
+    print(i, numbers[i])
+```
 
-&#x09;else: print("Statement")
+---
 
+# Element-Based Iteration
 
+```python
+for value in numbers:
+    print(value)
+```
 
+---
 
+# enumerate()
 
-&#x20; 3. Short Hand If-Else (Ternary Operator)
+```python
+for i, value in enumerate(numbers):
+    print(i, value)
+```
 
-&#x09;result = "Positive" if number > 0 else "Non-positive"
+---
 
+# while Loop
 
+```python
+i = 0
 
-**Iterative Statements in Python: for(known iterations)/while**(condition-based iterations)
+while i < len(numbers):
+    print(i, numbers[i])
+    i += 1
+```
 
+---
 
+# break, continue, pass
 
-&#x09;**1. Index-Based Iteration**
+```python
+for i in range(5):
 
-&#x09;for i in range(len(numbers)):
+    if i == 1:
+        break
 
-&#x20;   		print(i, numbers\[i])
+    if i == 2:
+        continue
 
+    if i == 3:
+        pass
+```
 
+## break
 
-&#x09;**2. Element-Based Iteration**
+```text
+Stops the entire loop immediately.
+```
 
-&#x09;for value in numbers:
+## continue
 
-&#x20;   		print(value)
+```text
+Skips current iteration.
+```
 
+## pass
 
+```text
+Placeholder for future code.
+```
 
-&#x09;**3. Index + Element Iteration using enumerate()**
+---
 
-&#x09;for i, value in enumerate(numbers):
+# String Functions
 
-&#x20;   		print(i, value)
+---
 
+# ASCII Functions
 
+## ord()
 
-&#x09;**4. while loop Iteration**
+```python
+print(ord('a'))
+```
 
-&#x09;i = 0
+Output:
 
-&#x09;while i < len(numbers):
+```text
+97
+```
 
-&#x20;   		print(i, numbers\[i])
+## chr()
 
-&#x20;   	i += 1
+```python
+print(chr(97))
+```
 
+Output:
 
+```text
+a
+```
 
+---
 
+# String Manipulation
 
-&#x09;for i in range(5):
+## strip()
 
+```python
+print("  hello  ".strip())
+```
 
+## replace()
 
-&#x09;    if i == 1:
+```python
+print("hello world".replace("world", "Python"))
+```
 
-&#x20;       	print("break executed")
+## lower()
 
-&#x20;       	**break**				    # **break**: Stops the entire loop immediately \& Control comes outside the loop
+```python
+print("HELLO".lower())
+```
 
-&#x09;    if i == 2:
+## upper()
 
-&#x20;       	print("continue executed")
+```python
+print("hello".upper())
+```
 
-&#x20;       	**continue**			    # **continue**: Skips only the current iteration; Loop continues with the next iteration
+## split()
 
-&#x09;    if i == 3:
+```python
+print("hello world".split())
+```
 
-&#x20;       	print("pass executed")
+---
 
-&#x20;       	**pass**				    # **pass:** Does nothing, Used as a placeholder for future code
+# String Checks
 
+## isalpha()
 
+```python
+print("abc".isalpha())
+```
 
-&#x09;    print(i)
+## isdigit()
 
+```python
+print("123".isdigit())
+```
 
+## isnumeric()
 
+```python
+print("123".isnumeric())
+```
 
+## isalnum()
 
-**========================================================================================================================================================================================**
+```python
+print("abc123".isalnum())
+```
 
+---
 
+# Numerical Functions
 
-**1. String Functions**
+---
 
-\----------------------------------------------------
+# Absolute & Rounding
 
+## abs()
 
+```python
+print(abs(-7))
+```
 
-├─ ASCII Functions
+## round()
 
-│     ├─ ord(c)        : ASCII value                    -> ord('a')        # 97
+```python
+print(round(3.1415, 2))
+```
 
-│     └─ chr(n)        : Character from ASCII           -> chr(97)         # 'a'
+---
 
-│
+# Power Functions
 
-├─ Manipulations
+## math.sqrt()
 
-│     ├─ strip()       : Remove spaces (both sides)     -> "  hello  ".strip()   # "hello"
+```python
+import math
+print(math.sqrt(25))
+```
 
-│     ├─ replace()     : Replace substring              -> "hello world".replace("world","Python")
+## pow()
 
-│     ├─ lower()       : Convert to lowercase           -> "HELLO".lower()       # "hello"
+```python
+print(pow(2,3))
+```
 
-│     ├─ upper()       : Convert to uppercase           -> "hello".upper()       # "HELLO"
+## Modular Power
 
-│     └─ split()       : Split string                   -> "hello world".split()  # \['hello','world']
+```python
+print(pow(2,3,5))
+```
 
-│
+---
 
-├─ String Checks
+# Aggregate Functions
 
-│     ├─ isalpha()     : Only letters                   -> "abc".isalpha()       # True
+## min()
 
-│     ├─ isdigit()     : Only digits                    -> "123".isdigit()       # True
+```python
+print(min([1,2,3]))
+```
 
-│     ├─ isnumeric()   : Numeric (incl unicode)         -> "123".isnumeric()     # True
+## max()
 
-│     ├─ isalnum()     : Letters + digits               -> "abc123".isalnum()    # True
+```python
+print(max([1,2,3]))
+```
 
-│     ├─ islower()     : Check lowercase                -> "hello".islower()     # True
+## sum()
 
-│     └─ isupper()     : Check uppercase                -> "HELLO".isupper()     # True
+```python
+print(sum([1,2,3]))
+```
 
-│
+---
 
-└─ Pattern Matching
+# Data Structures
 
-&#x20;     ├─ startswith()  : Starts with prefix             -> "hello".startswith("he")  # True
+---
 
-&#x20;     └─ endswith()    : Ends with suffix               -> "hello".endswith("lo")    # True
+| Data Structure | Ordered        | Mutable | Duplicates  |
+| -------------- | -------------- | ------- | ----------- |
+| String         | Yes            | No      | Yes         |
+| List           | Yes            | Yes     | Yes         |
+| Tuple          | Yes            | No      | Yes         |
+| Set            | No             | Yes     | No          |
+| Dictionary     | Inserted Order | Yes     | Keys Unique |
 
+---
 
+# List
 
-**2. Numerical Functions**
+## Initialization
 
-\----------------------------------------------------
+```python
+lst = []
+lst = [0] * 5
+```
 
+---
 
+# Insert Operations
 
-├─ Absolute \& Rounding
+## append()
 
-│     ├─ abs(n)         : Absolute value                -> abs(-7)           # 7
+```python
+lst.append(10)
+```
 
-│     ├─ round(n,d)     : Round to d decimals           -> round(3.1415,2)   # 3.14
+## insert()
 
-│     ├─ math.ceil(n)   : Round up                      -> math.ceil(5.1)    # 6
+```python
+lst.insert(0, 5)
+```
 
-│     └─ math.floor(n)  : Round down                    -> math.floor(5.9)   # 5
+## extend()
 
-│
+```python
+lst.extend([1,2,3])
+```
 
-├─ Power \& Logarithmic
+---
 
-│     ├─ math.sqrt(n)   : Square root                   -> math.sqrt(25)     # 5.0
+# Delete Operations
 
-│     ├─ math.pow(n,p)  : Power (float)                 -> math.pow(2,3)     # 8.0
+## pop()
 
-│     ├─ pow(n,p,mod)   : Modular power (IMPORTANT) -> (2^3) % 5   -> pow(2,3,5)        # 3
+```python
+lst.pop()
+```
 
-│     ├─ math.exp(n)    : e^n                           -> math.exp(1)
+## clear()
 
-│     ├─ math.log(x)    : Natural log                   -> math.log(10)
+```python
+lst.clear()
+```
 
-│     ├─ math.log2(x)   : Log base 2                    -> math.log2(8)      # 3.0
+---
 
-│     └─ math.log10(x)  : Log base 10                   -> math.log10(100)   # 2.0
+# Sorting
 
-│
+## sort()
 
-├─ Aggregate Functions
+```python
+lst.sort()
+```
 
-│     ├─ min(iterable)  : Minimum value                 -> min(\[1,2,3])      # 1
+## sorted()
 
-│     ├─ max(iterable)  : Maximum value                 -> max(\[1,2,3])      # 3
+```python
+new_list = sorted(lst)
+```
 
-│     ├─ len(iterable)  : Count elements                -> len(\[1,2,3])      # 3
+---
 
-│     ├─ sum(iterable)  : Sum                           -> sum(\[1,2,3])      # 6
+# Reverse
 
-│     ├─ statistics.mean(data)     : Average             -> mean(\[1,2,3])     # 2
+```python
+lst.reverse()
+```
 
-│     ├─ statistics.variance(data) : Variance
+```python
+lst[::-1]
+```
 
-│     └─ statistics.stdev(data)    : Standard deviation
+---
 
-│
+# List Comprehension
 
-└─ DSA Important Functions
+```python
+squares = [x**2 for x in range(5)]
+```
 
-&#x20;     ├─ divmod(a,b)    : (quotient, remainder)          -> divmod(7,3)       # (2,1)
+---
 
-&#x20;     ├─ math.gcd(a,b)  : Greatest common divisor         -> math.gcd(12,8)    # 4
+# Set
 
-&#x20;     └─ math.lcm(a,b)  : Least common multiple           -> math.lcm(4,6)     # 12
+## Initialization
 
+```python
+s = set()
+```
 
+---
 
+# Insert
 
+```python
+s.add(10)
+```
 
+```python
+s.update([1,2,3])
+```
 
+---
 
+# Set Operations
 
+## Union
 
+```python
+A | B
+```
 
+## Intersection
 
-===========================================================================================================================================================
+```python
+A & B
+```
 
-**Data Structures**:  Strings | List | Set | Tuple | Dictionary
+## Difference
 
+```python
+A - B
+```
 
+## Symmetric Difference
 
-&#x09;  🔸String     → Ordered          + **Immutable**, Sequence of characters       + Allows duplicates
+```python
+A ^ B
+```
 
-&#x09;  🔸List       → Ordered   	  + Mutable Collection of elements          + Allows duplicates
+---
 
-&#x09;  🔸Tuple      → Ordered   	  + **Immutable** Collection of elements        + Allows duplicates
+# Tuple
 
-&#x09;  🔸Set        → **Unordered** 	  + Mutable Collection of unique elements   + **No duplicates**
+## Initialization
 
-&#x09;  🔸Dictionary → Inserted Order   + Mutable collection of key-value pairs   + where keys are unique \&  Values allow duplicates
+```python
+t = ()
+```
 
+---
 
+# Tuple Packing & Unpacking
 
-**Operations**:
+```python
+t = 1,2,3
+```
 
+```python
+a,b,c = t
+```
 
+---
 
-&#x20; 	🔸**Creation**	    → Initialization
+# Dictionary
 
-&#x20; 	**🔸Modification**
+## Initialization
 
-&#x09;    Insert          → Add elements
+```python
+d = {}
+```
 
-&#x09;    Delete          → Remove elements
+---
 
-&#x09;    Update          → Modify elements
+# Insert & Update
 
-&#x20; 	**🔸Ordering**
+```python
+d["a"] = 1
+```
 
-&#x09;    Sorting         → Arrange elements
+```python
+d.update({"b":2})
+```
 
-&#x09;    Reverse         → Reverse order
+---
 
-&#x20; 	**🔸Access**
+# Delete
 
-&#x09;    Accessing       → Indexing / slicing / traversal
+## pop()
 
-&#x09;    Search          → Find element / existence check
+```python
+d.pop("a")
+```
 
-===========================================================================================================================================================
+## clear()
 
-**List:\[]**
+```python
+d.clear()
+```
 
-&#x09;**Initialization 		    :** list1=\[] , list1=\[0]\*n
+---
 
-&#x09;=================================================================================================
+# Accessing Dictionary
 
-&#x09;**Insert**
+## keys()
 
-&#x09;	l.insert(i, x)        : Insert item at given index
+```python
+for key in d.keys():
+    print(key)
+```
 
-&#x09;	l.append(x)           : Add item to the end of the list
+## values()
 
-&#x09;	l.extend(iterable)    : Extend list by appending elements from iterable (or) list1 + list2
+```python
+for value in d.values():
+    print(value)
+```
 
-&#x09;**Delete**
+## items()
 
-&#x09;	\[x for x in lst if x != v] : Remove all occurrences of v
+```python
+for key, value in d.items():
+    print(key, value)
+```
 
-&#x09;	l.pop(i)     		   : Remove \& return item at index i (default last)
+---
 
-&#x09;	l.clear()    		   : Remove all elements from the list
+# Searching in Dictionary
 
-&#x09;**Update**
+```python
+print("a" in d)
+```
 
-&#x09;    	list\[i] = value    	   : Replace the element at index i with new value
+```python
+print(2 in d.values())
+```
 
-&#x09;=================================================================================================
+---
 
-&#x09;**Sorting**
+# Interview Questions
 
-&#x09;	🔸l.sort(reverse=False)      : Sort list (Default: ascending)
+## Difference between list and tuple?
 
-&#x20; 		🔸sorted(lst)                : Returns new sorted list
+### List
 
-&#x09;**Reverse**
+* Mutable
+* Uses `[]`
 
-&#x09;	🔸l.reverse()                : In-place reverse
+### Tuple
 
-&#x20; 		🔸l\[::-1]                    : Returns reversed copy
+* Immutable
+* Uses `()`
 
-&#x09;=================================================================================================
+---
 
-&#x09;**Accessing**
+## Difference between sort() and sorted()?
 
-&#x09;	**Indices:**
+### sort()
 
-&#x09;		list\[start:stop:step]        → Slicing (stop is exclusive)
+* modifies existing list
+* returns `None`
 
-&#x20;   			list\[0:n] / list\[-n:-1]      → Positive / Negative indexing
+### sorted()
 
-&#x20;  		        list\[start:]                 → From start index to end
+* returns new sorted list
+* original list unchanged
 
-&#x20;   			list\[::-1]                   → Reverse list
+---
 
-&#x09;	**Looping:**
+## Difference between set and dictionary?
 
-&#x09;		🔸for item in lst:              → Iterate elements using value
+### Set
 
-&#x09;		🔸for i in range(len(lst)):     → Iterate elements using index
+* stores unique values
 
-&#x20;   			🔸for i, val in enumerate(lst): → Iterate elements using index + value
+### Dictionary
 
-&#x09;	**List comprehension:**
+* stores key-value pairs
 
-&#x09;			newlist = \[expression for item in list if condition]
+---
 
-&#x09;			Example: squares = \[x\*\*2 for x in numbers if x % 2 == 0]
+## Why are sets faster for searching?
 
+Because sets use:
 
+```text
+Hashing
+```
 
-&#x09;**Search**
+which provides near:
 
-&#x09;		  in operator                    → Check existence
+```text
+O(1)
+```
 
-&#x20; 			  \[x for x in lst if x==2]       → Get all index's of 2
-
-===========================================================================================================================================================
-
-**SET: {}**
-
-
-
-&#x09;**Initialization** 		  : set()
-
-&#x09;=================================================================================================
-
-&#x09;**Insert**
-
-&#x09;	s.add(x)		: Add element x to the set
-
-&#x09;	s.update(iterable): Add multiple elements from iterable
-
-
-
-&#x09;**Delete**
-
-&#x09;	new\_set = s-{x}	: Remove all occurrences of v
-
-&#x09;	s.pop()     	: Remove \& return last item (No index support)
-
-&#x09;	s.clear()    	: Remove all elements in the set
-
-&#x09;**Update**
-
-&#x09;    	Set elements can’t be updated directly, you must remove \& add new value.
-
-&#x09;=================================================================================================
-
-&#x09;**Sorting**	sorted(lst)              : Returns new sorted list
-
-&#x09;**Reverse**	rev\_list = list(s)\[::-1]  # convert set to list (since set is unordered) and reverse the list using slicing
-
-&#x09;=================================================================================================
-
-&#x09;**Accessing**
-
-&#x09;	**Looping:**
-
-&#x09;		🔸for item in lst:              → Iterate elements using value
-
-&#x09;
-
-&#x09;	**Set comprehension:**
-
-&#x09;			newlist = {expression for item in list if condition}
-
-&#x09;			Example: squares = {x\*\*2 for x in numbers if x % 2 == 0}
-
-
-
-&#x09;**Search**
-
-&#x09;		🔸in operator                    → Check existence
-
-&#x09;=================================================================================================
-
-&#x09;**Set Operations:**                                           	   **Set Checks:**
-
-&#x09;	A | B → A.union(B)                                      	    A.issubset(B)    : A ⊆ B
-
-&#x09;	A \& B → A.intersection(B)                                 	    A.issuperset(B)  : A ⊇ B
-
-&#x09;	A - B → A.difference(B)                                     	    A.isdisjoint(B)  : no common elements
-
-&#x09;	A ^ B → A.symmetric\_difference(B)   A ^ B = (A ∪ B) - (A ∩ B)
-
-===========================================================================================================================================================
-
-**Tuple:**
-
-&#x09;**Initialization 		    :** t = ()
-
-&#x09;=================================================================================================
-
-&#x09;**Insert, Delete, Update	    :** NA (Immutable)
-
-&#x09;=================================================================================================
-
-&#x09;**Sorting**
-
-&#x09;	🔸l.sort(reverse=False)      : NA(Immutable, so no in place sorting)
-
-&#x20; 		🔸sorted(lst)                : Returns new sorted list
-
-&#x09;**Reverse**
-
-&#x09;	🔸l.reverse()                : NA(Immutable, so no in place reverse)
-
-&#x20; 		🔸l\[::-1]                    : Returns reversed copy
-
-&#x09;=================================================================================================
-
-&#x09;**Accessing**
-
-&#x09;	**Indices:**
-
-&#x09;		list\[start:stop:step]        → Slicing (stop is exclusive)
-
-&#x20;   			list\[0:n] / list\[-n:-1]      → Positive / Negative indexing
-
-&#x20;  		        list\[start:]                 → From start index to end
-
-&#x20;   			list\[::-1]                   → Reverse list
-
-&#x09;	**Looping:**
-
-&#x09;		🔸for item in tup:              → Iterate elements using value
-
-&#x09;		🔸for i in range(len(tup)):     → Iterate elements using index
-
-&#x20;   			🔸for i, val in enumerate(tup): → Iterate elements using index + value
-
-&#x09;
-
-&#x09;**Search**
-
-&#x09;		  in operator                    → Check existence
-
-&#x20; 			  \[x for x in lst if x==2]       → Get all index's of 2
-
-&#x09;=================================================================================================
-
-&#x09;**Packing \& Unpacking:**
-
-&#x09;	t = 1,2,3	# Packing
-
-&#x09;	a,b,c = t	# UnPacking
-
-&#x09;
-
-===========================================================================================================================================================
-
-**Dictionary:{}**
-
-
-
-&#x09;**Initialization**
-
-&#x09;	dict\_var={}
-
-&#x09;	defaultdict(int)   : int()   → If key not exists return 0
-
-&#x09;	defaultdict(float) : float() → If key not exists return 0.0
-
-&#x09;	defaultdict(str)   : str()   → If key not exists return ""
-
-&#x09;	defaultdict(\[])    : \[]      → If key not exists return \[]
-
-&#x09;	defaultdict(set()) : {}      → If key not exists return {}
-
-&#x09;=================================================================================================
-
-&#x09;**Insert**
-
-&#x09;	d\["a"] = 1                    # single insert
-
-&#x09;	d.update({"b": 2, "c": 3})    # multiple inserts
-
-
-
-&#x09;**Update**
-
-&#x09;	d\["a"] = 1                    # single insert
-
-&#x09;	d.update({"b": 2, "c": 3})    # multiple inserts
-
-
-
-&#x09;**Delete**
-
-&#x09;	pop(key)  : Remove key and return value			   d = {k:v for k, v in d.items() if k != "a"}
-
-&#x09;	popitem() : Remove and return last inserted key-value pair
-
-&#x09;	clear()   : Remove all items
-
-&#x09;=================================================================================================
-
-&#x09;**Accessing:**
-
-
-
-&#x09;	1. d.keys()  : view all keys		for key in d.keys():    print(key)
-
-&#x09;	2. d.values(): view all values  	for value in d.values():  print(value)
-
-&#x09;	3. d.items() : view key-value pairs	for key, value in d.items(): print(f"Key{key} Value: {value}")
-
-
-
-
-
-&#x09;**Searching:**
-
-&#x09;	print("a" in d)           # Key search
-
-&#x09;	print(2 in d.values())    # Value search
-
-===========================================================================================================================================================
-
+average lookup time.
